@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>This is a course registration and grading system. Please Register or login to continue.</p>
+    <div class="nav-container">
+        <div>
+            <span class="nav-label">Student</span>
+            <a class="nav-link blue-text" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link blue-text" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </div>
+        <div>
+            <span class="nav-label">Lecturer</span>
+            <a class="nav-link blue-text" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link blue-text" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </div>
+    </div>
+</div>
