@@ -1,0 +1,32 @@
+﻿@model StudentPortal.Models.Courses
+
+
+@{
+    ViewBag.Title = "LandingPageLecturer";
+}
+
+<h2>LandingPageLecturer</h2>
+
+<form action="/Accounts/RegisterCourses" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.CourseName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CourseName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseCode, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.CourseCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CourseCode)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseUnits, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.CourseUnits, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CourseUnits)
+        </div>
+    </div>
+</form>
