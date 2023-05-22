@@ -1,0 +1,12 @@
+﻿@model List<Course>
+
+<h1>Select a course to grade</h1>
+
+<form method="post" action="@Url.Action("GradeCourses", "Lecturer")">
+    @foreach (var course in Model)
+    {
+        <div>
+            <button class="course-button" type="submit" name="selectedCourseId" value="@course.Id">@course.CourseName</button>
+        </div>
+    }
+</form>

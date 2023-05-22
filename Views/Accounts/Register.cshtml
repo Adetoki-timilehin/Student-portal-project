@@ -1,0 +1,102 @@
+﻿@model StudentPortal.Models.User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<form action="/Accounts/Register" method="post" class="form-horizontal" role="form">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserEmail, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.UserEmail)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.IsStudent, new { @class = "student-checkbox", value = "true" })
+                    Are you a student?
+                </label>
+                @Html.HiddenFor(m => m.IsStudent, new { value = "false" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group student-field" style="display: none;">
+        @Html.LabelFor(m => m.MatricNo, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MatricNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MatricNo)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</form>
+
+@Html.ValidationSummary()
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Show/hide student field based on checkbox value
+
+        var $studentField = $(".student-field");
+        var $isStudentCheckbox = $(".student-checkbox");
+
+        $isStudentCheckbox.change(function () {
+            if (this.checked) {
+                $studentField.show();
+            } else {
+                $studentField.hide();
+            }
+        });
+    });
+</script>
+

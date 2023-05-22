@@ -1,0 +1,15 @@
+﻿@model List<Course>
+
+<h1>Select courses</h1>
+
+<form method="post" action="@Url.Action("RegisterCourses", "Student")">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <div>
+            <input type="checkbox" name="selectedCourses" value="@Model[i].Id" /> @Model[i].CourseName
+            <input type="hidden" name="selectedCourses.Index" value="@i" />
+        </div>
+    }
+
+    <button type="submit">Register</button>
+</form>

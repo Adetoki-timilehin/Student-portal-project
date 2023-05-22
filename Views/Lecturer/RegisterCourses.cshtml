@@ -1,0 +1,44 @@
+﻿@model StudentPortal.Models.Course
+
+
+@{
+    ViewBag.Title = "LandingPageLecturer";
+}
+
+<h2>Input courses</h2>
+
+<form action="/Lecturer/RegisterCourses" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CourseName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseCode, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CourseCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CourseCode)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseUnits, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CourseUnits, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CourseUnits)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+<p><a href="/Lecturer/GradeCourses" class="btn btn-primary btn-lg">Grade students &raquo;</a></p>
+
+@Html.ValidationSummary()
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>

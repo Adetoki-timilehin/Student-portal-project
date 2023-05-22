@@ -1,0 +1,30 @@
+﻿@model Tuple<List<CourseUsers>, List<User>>
+
+<h1>Please Input grades for each student</h1>
+
+<form method="post" action="@Url.Action("GradeIndividualCourse", "Lecturer")">
+    @for (var i = 0; i < Model.Item1.Count; i++)
+    {
+        var courseUser = Model.Item1[i];
+        var user = Model.Item2[i];
+        var firstName = user?.FirstName ?? string.Empty;
+        var lastName = user?.LastName ?? string.Empty;
+        var grade = courseUser.Grade;
+
+        <div>
+            <a class="navbar-brand" asp-area="" asp-controller="Lecturer" asp-action="GradeCourses">@firstName @lastName</a>
+            <input type="text" name="Grades[@i].UserId" value="@courseUser.UserId" hidden />
+            <input type="text" name="Grades[@i].CourseId" value="@courseUser.CourseId" hidden />
+            <input type="text" name="Grades[@i].Grade" value="@grade" style="width: 3ch; height: 3ch" />
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Complete</button>
+        </div>
+    </div>
+</form>
+
+
+
+
